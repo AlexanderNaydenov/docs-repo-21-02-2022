@@ -1,0 +1,22 @@
+fragment Page on Page {
+  title
+  content {
+    markdown
+    ... on PageContentRichText {
+      json
+      references {
+        ...EmbeddedAsset
+        # Custom embeds need added here on the union
+        ...EmbeddedPage
+      }
+    }
+  }
+  seo {
+    title
+    description
+    noindex
+    image {
+      url
+    }
+  }
+}

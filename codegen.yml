@@ -1,0 +1,18 @@
+overwrite: true
+schema: ${GRAPHCMS_ENDPOINT}
+documents: './app/**/*.{gql,graphql,ts,tsx}'
+
+generates:
+  ./app/generated/schema.server.ts:
+    plugins:
+      - typescript
+      - typescript-operations
+      - typescript-graphql-request
+      - fragment-matcher
+
+config:
+  gqlImport: graphql-request#gql
+
+hooks:
+  afterAllFileWrite:
+    - prettier --write

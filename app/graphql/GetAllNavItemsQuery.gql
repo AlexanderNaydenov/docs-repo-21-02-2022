@@ -1,0 +1,17 @@
+query GetAllNavItems {
+  navigations(first: 1) {
+    id
+    linkTo {
+      __typename
+      ... on Page {
+        ...NavPage
+      }
+      ... on Chapter {
+        ...NavChapter
+      }
+      ... on ExternalLink {
+        ...NavExternalLink
+      }
+    }
+  }
+}
